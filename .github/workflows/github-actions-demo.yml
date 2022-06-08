@@ -20,6 +20,7 @@ jobs:
       - name: Prepare env
         run: |
           pwd
+          ls -alh
 
       - name: docker compose info
         run: |
