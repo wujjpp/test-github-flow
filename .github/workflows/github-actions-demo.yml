@@ -8,10 +8,6 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - name: show env
-        run: |
-          export
-
       - name: Check out repository code
         uses: actions/checkout@v3
 
@@ -19,15 +15,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      
-      - name: build
-        run: |
-          npm install --verbose --unsafe-perm
-          npm run build
 
       - name: Startup Nebula
         run: |
           docker-compose up -d
+
+      - name: build
+        run: |
+          npm install --verbose --unsafe-perm
+          npm run build
 
       - name: test
         run: |
