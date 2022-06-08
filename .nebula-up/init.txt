@@ -1,5 +1,4 @@
 create space nebula_node(vid_type = FIXED_STRING(30));
-create tag company(name string);
 use nebula_node;
 create tag company(name string);
 create tag person(name string, age int);
