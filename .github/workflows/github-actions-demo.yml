@@ -19,7 +19,7 @@ jobs:
 
       - name: Prepare env
         run: |
-          ls ${{ github.workspace }}
+          pwd
 
       - name: docker compose info
         run: |
