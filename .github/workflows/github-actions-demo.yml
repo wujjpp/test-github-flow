@@ -3,6 +3,7 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [14.x]
@@ -19,14 +20,23 @@ jobs:
       - name: Startup Nebula
         run: |
           cd ./.nebula-up
+          rm -rf ./data ./log
           docker-compose up -d
+          sleep 20
+          cat init.txt | xargs echo -n | xargs ./console.sh
           cd ..
 
       - name: build
         run: |
-          npm install --verbose --unsafe-perm
+          npm install --unsafe-perm
           npm run build
 
       - name: test
         run: |
           npm run test
+      
+      - name: query
+        run: |
+          cd ./.nebula-up
+          ./console.sh "show spaces"
+          cd ..
