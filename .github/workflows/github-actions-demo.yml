@@ -23,7 +23,7 @@ jobs:
           rm -rf ./data ./log
           docker-compose up -d
           sleep 20
-          cat init.txt | xargs echo -n | xargs ./console.sh
+          cat init.txt | xargs echo -n | xargs ./console.sh -e
           cd ..
 
       - name: build
@@ -38,5 +38,5 @@ jobs:
       - name: query
         run: |
           cd ./.nebula-up
-          ./console.sh "show spaces"
+          ./console.sh -e "show spaces"
           cd ..
