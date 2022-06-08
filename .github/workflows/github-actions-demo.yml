@@ -21,6 +21,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
 
-      - name: run test
+      - name: docker compose info
         run: |
-          docker-compose -v 
+          docker-compose -v
+
+      - name: docker info 
+        run: |
+          docker info
