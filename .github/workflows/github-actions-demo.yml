@@ -18,7 +18,9 @@ jobs:
 
       - name: Startup Nebula
         run: |
+          cd ./.nebula-up
           docker-compose up -d
+          cd ..
 
       - name: build
         run: |
