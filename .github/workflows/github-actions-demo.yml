@@ -19,16 +19,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Prepare env
+      
+      - name: build
         run: |
-          pwd
-          ls -alh
+          npm install --verbose --unsafe-perm
+          npm run build
 
-      - name: docker compose info
+      - name: Startup Nebula
         run: |
-          docker-compose -v
+          docker-compose up -d
 
-      - name: docker info 
+      - name: test
         run: |
-          docker info
+          npm run test
