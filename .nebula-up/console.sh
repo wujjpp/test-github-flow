@@ -7,4 +7,4 @@
 # Usage: console.sh or console.sh -e "SHOW HOSTS"
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64;
-sudo docker run --rm -ti --network nebula-up_nebula-net vesoft/nebula-console:v3.0.0 -addr graphd -port 9669 -u root -p nebula "$@"
+sudo docker run --rm -i --network nebula-up_nebula-net vesoft/nebula-console:v3.0.0 -addr graphd -port 9669 -u root -p nebula "$@"
