@@ -34,10 +34,7 @@ jobs:
       - name: Query
         run: |
           cd ./.nebula-up
+          ls -alh
           ./console.sh -e "show spaces"
           docker-compose down
           cd ..
-      
-      - name: ls
-        run: |
-          ls -alh
