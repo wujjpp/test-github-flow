@@ -28,7 +28,7 @@ jobs:
         run: |
           cd ./.nebula-up
           rm -rf ./data ./log
-          docker-compose up -d
+          sudo docker-compose up -d
           ./check.sh
           ./console.sh -f /root/init.ngql
           cd ..
