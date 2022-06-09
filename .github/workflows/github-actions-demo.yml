@@ -28,9 +28,10 @@ jobs:
         run: |
           cd ./.nebula-up
           rm -rf ./data ./log
-          sudo docker-compose up -d
+          docker-compose up -d
           sleep 20
           ./check.sh
+          ./console.sh -e "create space nebula_node(vid_type = FIXED_STRING(30));"
           ./console.sh -f /root/init.ngql
           cd ..
  
