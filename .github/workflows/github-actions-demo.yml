@@ -30,21 +30,14 @@ jobs:
           sleep 60
           ./console.sh -f /root/init.ngql
           cd ..
-
-      - name: Build
-        run: |
-          node -v
-          npm install --unsafe-perm
-          npm run build
-
-      - name: Test
-        run: |
-          node -v
-          npm run test
-      
+ 
       - name: Query
         run: |
           cd ./.nebula-up
           ./console.sh -e "show spaces"
           docker-compose down
           cd ..
+      
+      - name: ls
+        run: |
+          ls -alh
