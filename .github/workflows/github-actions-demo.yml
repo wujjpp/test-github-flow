@@ -29,12 +29,13 @@ jobs:
           cd ./.nebula-up
           rm -rf ./data ./log
           docker-compose up -d
+          echo "Sleep 20s for wating nebula cluster"
           sleep 20
           ./check.sh
           ./console.sh -e "create space nebula_node(vid_type = FIXED_STRING(30));"
-          sleep 2
+          sleep 5
           ./console.sh -f /root/init-create.ngql
-          sleep 2
+          sleep 5
           ./console.sh -f /root/init-data.ngql
           cd ..
  
