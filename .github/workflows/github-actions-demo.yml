@@ -21,9 +21,9 @@ jobs:
         run: |
           cd ./.nebula-up
           rm -rf ./data ./log
-          docker-compose up -d
+          docker-compose up
           sleep 20
-          cat init.txt | xargs echo -n | xargs ./console.sh -e
+          ./console.sh -f /root/init.ngql
           cd ..
 
       - name: build
@@ -39,4 +39,5 @@ jobs:
         run: |
           cd ./.nebula-up
           ./console.sh -e "show spaces"
+          docker-compose down
           cd ..
