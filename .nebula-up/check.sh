@@ -7,12 +7,12 @@ do
     then exit 0
   fi
 
-  docker-compose ps
-
   if [ $retries -gt 30 ];
     then exit 0
   fi
 
+  docker ps
+  
   sleep 2
 
   retries=$((retries+1))
