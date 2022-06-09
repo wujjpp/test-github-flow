@@ -33,7 +33,9 @@ jobs:
           ./check.sh
           ./console.sh -e "create space nebula_node(vid_type = FIXED_STRING(30));"
           sleep 2
-          ./console.sh -f /root/init.ngql
+          ./console.sh -f /root/init-create.ngql
+          sleep 2
+          ./console.sh -f /root/init-data.ngql
           cd ..
  
       - name: Query
