@@ -7,9 +7,9 @@ do
     then exit 0
   fi
 
-  docker logs nebula-up_storaged0_1
+  docker-compose ps
 
-  if [ $retries -gt 120 ];
+  if [ $retries -gt 30 ];
     then exit 0
   fi
 
