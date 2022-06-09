@@ -12,6 +12,10 @@ do
   fi
 
   docker-compose ps
+
+  echo "==============================="
+
+  docker logs nebula-up_storaged0_1
   
   sleep 2
 
