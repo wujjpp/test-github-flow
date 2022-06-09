@@ -13,6 +13,8 @@ jobs:
         run: |
           export
           echo $PWD
+          docker -v
+          docker-compose -v
 
       - name: Check out repository code
         uses: actions/checkout@v3
