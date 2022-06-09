@@ -1,7 +1,6 @@
-show hosts;
 show hosts storage;
 show hosts meta;
-show hosts graphd;
+show hosts graph;
 create space nebula_node(vid_type = FIXED_STRING(30));
 use nebula_node;
 create tag company(name string);
