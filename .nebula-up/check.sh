@@ -16,7 +16,7 @@ do
 
   if [ $retries -gt 120 ];
     then 
-      echo "Retry limit exceeded"
+      echo "Max retry limitation exceeded"
       exit 1
   fi
 
