@@ -14,10 +14,11 @@ do
   docker-compose ps
 
   echo "==============================="
-
-  docker logs nebula-up_storaged0_1
+  ls -alh /logs/storage0
+  cat ./logs/storage0
+  cat ./logs/storage0/storaged-stderr.log
   
-  sleep 2
+  sleep 10
 
   retries=$((retries+1))
 
