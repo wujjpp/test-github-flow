@@ -13,7 +13,6 @@ jobs:
         run: |
           export
           echo $PWD
-          echo "=============="
 
       - name: Check out repository code
         uses: actions/checkout@v3
