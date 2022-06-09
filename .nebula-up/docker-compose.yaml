@@ -326,3 +326,7 @@ services:
 
 networks:
   nebula-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.0.0/16"
