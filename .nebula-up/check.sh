@@ -3,28 +3,28 @@
 retries=0
 while :
 do
+  retries=$((retries+1))
+
+  echo "#${retries} - Starting checking nebula graphd..."
   if curl -sL --fail http://127.0.0.1:19669;
-    then exit 0
+    then 
+      echo "Result: Successfully"
+      exit 0
   fi
 
+  echo "Result: Failed"
+
   if [ $retries -gt 120 ];
-    then exit 0
+    then 
+      echo "Retry limit exceeded"
+      exit 1
   fi
 
   docker-compose ps
 
-  echo "==============================="
-  ls -alh ./data
-  ls -alh ./logs/storage0
-  cat ./logs/storage0/storaged-stderr.log
-  echo "==============================="
-  cat ./logs/storage0/nebula-storaged.ERROR
+  echo "Sleep 10s"  
   
   sleep 10
-
-  retries=$((retries+1))
-
-  echo "check: ${retries}"
 done
 
-exit 1
+exit 0

@@ -4,7 +4,7 @@ services:
     image: vesoft/nebula-metad:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=metad0
@@ -38,7 +38,7 @@ services:
     image: vesoft/nebula-metad:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=metad1
@@ -72,7 +72,7 @@ services:
     image: vesoft/nebula-metad:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=metad2
@@ -106,7 +106,7 @@ services:
     image: vesoft/nebula-storaged:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=storaged0
@@ -144,7 +144,7 @@ services:
     image: vesoft/nebula-storaged:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=storaged1
@@ -182,7 +182,7 @@ services:
     image: vesoft/nebula-storaged:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --local_ip=storaged2
@@ -220,7 +220,7 @@ services:
     image: vesoft/nebula-graphd:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --port=9669
@@ -256,7 +256,7 @@ services:
     image: vesoft/nebula-graphd:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --port=9669
@@ -292,7 +292,7 @@ services:
     image: vesoft/nebula-graphd:v3.1.0
     environment:
       USER: root
-      TZ: UTC
+      TZ:   "${TZ}"
     command:
       - --meta_server_addrs=metad0:9559,metad1:9559,metad2:9559
       - --port=9669
@@ -324,9 +324,19 @@ services:
     cap_add:
       - SYS_PTRACE
 
+  console:
+    image: vesoft/nebula-console:v3.0.0
+    entrypoint: ""
+    command: 
+      - sh
+      - -c
+      - |
+        sleep 3 &&
+        nebula-console -addr graphd -port 9669 -u root -p nebula -e 'ADD HOSTS "storaged0":9779,"storaged1":9779,"storaged2":9779' &&
+        sleep 36000
+    depends_on:
+      - graphd
+    networks:
+      - nebula-net
 networks:
   nebula-net:
-    ipam:
-      driver: default
-      config:
-        - subnet: "192.168.0.0/16"
