@@ -8,4 +8,4 @@
 
 export DOCKER_DEFAULT_PLATFORM=linux/amd64;
 echo $PWD
-docker run --rm -v $PWD/.nebula-up:/root --network nebula-up_nebula-net vesoft/nebula-console:v3.0.0 -addr graphd -port 9669 -u root -p nebula "$@"
+docker run --rm -v $PWD:/root --network nebula-up_nebula-net vesoft/nebula-console:v3.0.0 -addr graphd -port 9669 -u root -p nebula "$@"
