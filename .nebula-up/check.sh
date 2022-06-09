@@ -4,13 +4,13 @@ retries=0
 while :
 do
   if curl -sL --fail http://127.0.0.1:19669;
-    then break
+    then exit 0
   fi
 
-  docker-compose ps
+  docker logs nebula-up_storaged0_1
 
   if [ $retries -gt 120 ];
-    then break
+    then exit 0
   fi
 
   sleep 2
@@ -19,3 +19,5 @@ do
 
   echo "check: ${retries}"
 done
+
+exit 1
