@@ -14,6 +14,7 @@ do
   docker-compose ps
 
   echo "==============================="
+  ls -alh ./data
   ls -alh ./logs/storage0
   cat ./logs/storage0/storaged-stderr.log
   
