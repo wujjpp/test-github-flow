@@ -32,9 +32,12 @@ jobs:
           echo "Sleep 20s for waiting nebula cluster"
           sleep 20
           ./check.sh
+          echo "Create space nebula_node"
           ./console.sh -e "create space nebula_node(vid_type = FIXED_STRING(30));"
+          echo "Sleep 5s for waiting `space` ready"
           sleep 5
           ./console.sh -f /root/init-create.ngql
+          echo "Sleep 20s for `schema` ready"
           sleep 20
           ./console.sh -f /root/init-data.ngql
           cd ..
