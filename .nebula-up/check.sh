@@ -17,6 +17,8 @@ do
   ls -alh ./data
   ls -alh ./logs/storage0
   cat ./logs/storage0/storaged-stderr.log
+  echo "==============================="
+  cat ./logs/storage0/nebula-storaged.ERROR
   
   sleep 10
 
