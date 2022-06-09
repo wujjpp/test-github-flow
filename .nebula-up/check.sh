@@ -11,7 +11,7 @@ do
     then exit 0
   fi
 
-  docker ps
+  docker-compose ps
   
   sleep 2
 
