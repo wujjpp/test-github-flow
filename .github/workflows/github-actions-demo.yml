@@ -33,11 +33,13 @@ jobs:
 
       - name: Build
         run: |
+          node -v
           npm install --unsafe-perm
           npm run build
 
       - name: Test
         run: |
+          node -v
           npm run test
       
       - name: Query
