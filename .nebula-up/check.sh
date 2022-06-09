@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 retries=0
+
 while :
 do
   retries=$((retries+1))
