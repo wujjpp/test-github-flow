@@ -7,7 +7,7 @@ do
     then exit 0
   fi
 
-  if [ $retries -gt 30 ];
+  if [ $retries -gt 120 ];
     then exit 0
   fi
 
